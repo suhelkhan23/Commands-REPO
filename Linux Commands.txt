@@ -1,0 +1,13 @@
+Linux commands
+
+1) To see the list of ports and all the processes running on them. 
+    $ netstat -tulpno
+    $ netatat -tulpno | grep :80
+    
+2) chef-server-ctl --help
+3) curl is used to hit a URL
+4) pwd -> Present working directory
+5) You can install a pretty cool tool by the name of tree which will show you the complete Tree            structure of directory.
+6) manage.chef.io
+7) supermarket.chef.io // Place for cookbooks
+8) tar -xzvf <tar_name_with_extension> -C <Destination_folder_name>

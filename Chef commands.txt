@@ -1,0 +1,118 @@
+#--------------------------------------------------------------------------
+
+# To create a simple file with content as hello world FILE_NAME= hello.rb
+
+file 'motd' do
+   content 'hello world' 
+end
+# Use command chef-apply hello.rb
+
+#--------------------------------------------------------------------------
+
+# To delete a file change the hello.rb to 
+
+file 'motd' do
+    action  : delete
+end
+
+# Again use chef-apply hello.rb
+# This wil delete the file
+
+#--------------------------------------------------------------------------
+
+# To create a directory
+directory '/<directory_name>' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
+#--------------------------------------------------------------------------
+
+# To install a package (Package would be downloaded from internet)
+
+package '<package_name>' do
+    action : install
+end
+# but default action in  chef is install so the above script can be modified to
+package '<package_name>'
+
+#--------------------------------------------------------------------------
+
+# To start and enable a service, give the actions in form of an array
+
+service '<service_name>' do
+    action [:enable , :start]
+end
+#--------------------------------------------------------------------------
+
+# To generate a cookbook
+
+$ chef generate cookbook <cookbook_name>
+
+#--------------------------------------------------------------------------
+
+# To generate a template
+
+$ chef generate template <cookbook_name> <template_name e.g. config.properties, *.xml,*.* etc>
+    
+# This would generate a file inside the templates folder looking like <template_name.extension.erb>
+# There would be an .erb following the file name.
+
+#--------------------------------------------------------------------------
+=begin
+
+After you generate cookbook a complete hiearchy of directories would form inside the 
+cookbook folder. Inside cookbook folder you would see folders like : Recipes, Templates etc.
+There would also be some files inside the folder namely CHEFIGNORE, readme.rb, metadata.rb etc
+* Inside the Recipes folder you would see a default.rb file which is the default recipe file, chef       begins from. You can write your recipe inside this file.
+* Inside templates folder you can define a template along with some placeholders for some data which
+  might change on every node
+
+=end
+#--------------------------------------------------------------------------
+
+# To generate a file using template
+
+$ template '<Address_where_you_want_generated_file>/file_name.extension' do
+    source '<template_Address>'
+end
+
+#--------------------------------------------------------------------------
+
+# To run a cookbook
+# cd to outside of cookbook
+$ chef-client --local-mode --runlist 'recipe[<recipe_name>]'
+
+#--------------------------------------------------------------------------
+
+# To download a cookbook from Super Market
+
+$ knife cookbook site download <COOKBOOK_NAME_AS_ON_SUPERMARKET>
+    
+#--------------------------------------------------------------------------
+
+# To upload a cookbook to the chef server
+
+$ knife cookbook upload <COOKBOOK_NAME_AS_ON_WORKSTATION>
+    
+#--------------------------------------------------------------------------
+
+# To bootstrap a node from workstation
+
+$ knife bootstrap <ip_address_of_node> --ssh-user <username> --ssh-password '<password>' --sudo
+  --use-sudo-password --node-name <node_name> --run-list 'recipe[<recipe_name>]'
+
+#--------------------------------------------------------------------------
+
+# To see a list of all nodes associated with particular (Chef)server/workstation
+
+$ knife node list
+
+# To see the details of node
+
+$ knife node show <node_name>
+    
+#--------------------------------------------------------------------------
+

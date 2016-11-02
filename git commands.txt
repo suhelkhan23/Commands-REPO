@@ -1,0 +1,57 @@
+git init
+
+git status
+
+git add <FILE_NAME>
+
+git add *.<extension>
+
+git add *.*
+
+git add --all // will add all the files to the staging area
+
+git add "*.<EXTENSION>" // Will search all the directories for the given extension
+
+git log // Will show the log status
+
+git commit -m "<MESSAGE>"
+
+git diff // to see the diff between last commit and non stages files
+
+git diff --staged // to see the differences between last commit and staged files
+
+git reset HEAD <FILE_NAME> // to unstage a file
+
+git checkout --[SPACE]<FILE_NAME> // To revert the changes to last commit
+
+git commit -a -m "<MESSAGE>" // This will first add a file to the staging and then commit it but the file should be tracked
+
+git reset --soft HEAD^ // This will revert back to the last commit and add all the files back to staging but changes will stay
+
+// COMMIT IN TERMS OF GIT IS NOT SAVING A FILE. IT MAY INCLUDE MULTIPLE FILES.
+
+git commit --amend -m "<MESSAGE>" // This will amend changes to the last commit and Over write any message sent with the previous commit
+
+git reset --hard HEAD^ // Undo last commit and all changes
+
+git rest --hard HEAD^^ // Undo last 2 commits and all changes
+
+git remote add origin https://github.com/suhelkhan23/git-real.git // here origin is the name of the central repository but origin is preferred
+
+git push -u origin master // Origin, is the remote name and master is the branch. '-u' will remember which branch you are pushing to and next time you can simply run git push
+
+git remote rm <name> // To remove remotes
+
+git clone <remote URL>
+
+git branch // will show all the branches with the current active branch
+
+git branch <branch_name> // Will create a new branch
+
+git checkout <branch_name> //will switch to another branch
+
+git merge <branch_name> // Will merger you specified <branch_name> with current branch
+
+git branch -d <branch_name> // will remove the branch
+
+git checkout -b <branch_name> // Will create a branch and AUTOMATICALLY check it out
