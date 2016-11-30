@@ -11,3 +11,4 @@ Linux commands
 6) manage.chef.io
 7) supermarket.chef.io // Place for cookbooks
 8) tar -xzvf <tar_name_with_extension> -C <Destination_folder_name>
+9)  scp -C -i ./PIM11142016.pem -r PIM_8_0_06 ec2-user@10.131.43.224:PIM_Installers
